@@ -1,12 +1,27 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PersonService } from './api/person.service';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+	selector: 'app-root',
+	imports: [RouterOutlet],
+	templateUrl: './app.html',
+	styleUrl: './app.css'
 })
+
 export class App {
-  protected readonly title = signal('appcwds220252');
+	constructor(
+		private personService: PersonService
+	) {}
+
+	ngOnInit(): void {
+		this.personService.insert().subscribe({
+			next: (response: any) => {
+				console.log(response);
+			},
+			error: (error: any) => {
+				console.log(error);
+			}
+		});
+	}
 }
