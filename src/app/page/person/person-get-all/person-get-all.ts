@@ -1,0 +1,31 @@
+import { Component } from '@angular/core';
+import { PersonService } from '../../../api/person.service';
+import { CommonModule } from '@angular/common';
+
+@Component({
+	selector: 'app-person-get-all',
+	imports: [
+		CommonModule
+	],
+	templateUrl: './person-get-all.html',
+	styleUrl: './person-get-all.css'
+})
+
+export class PersonGetAll {
+	listPerson: any[] = [];
+
+	constructor(
+		private personService: PersonService
+	){}
+
+	ngOnInit(): void {
+		this.personService.getAll().subscribe({
+			next: (response: any) => {
+				this.listPerson = response;
+			},
+			error: (error: any) => {
+				console.log(error);
+			}
+		});
+	}
+}

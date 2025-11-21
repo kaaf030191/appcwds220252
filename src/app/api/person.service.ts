@@ -11,7 +11,11 @@ export class PersonService {
 		private httpClient: HttpClient
 	) {}
 
-	public insert(): Observable<any> {
-		return this.httpClient.get('http://localhost:8080/person/insert');
+	public insert(formData: any): Observable<any> {
+		return this.httpClient.post('http://localhost:8080/person/insert', formData);
+	}
+
+	public getAll(): Observable<any> {
+		return this.httpClient.get('http://localhost:8080/person/getall');
 	}
 }

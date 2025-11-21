@@ -1,50 +1,55 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PersonService } from '../../../api/person.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { AdvertisingSection } from '../../../component/advertising-section/advertising-section';
 
 @Component({
 	selector: 'app-person-insert',
 	imports: [
-		AdvertisingSection
+		ReactiveFormsModule
 	],
 	templateUrl: './person-insert.html',
 	styleUrl: './person-insert.css',
-	providers: [
-		BsModalService
-	]
+	providers: []
 })
 
 export class PersonInsert {
-	firstName: string = 'Kevin Arnold';
-	mySuscription: string = '';
-	data: any = {};
+	formPerson: FormGroup;
+
+	get firstNameFb() { return this.formPerson.controls['firstName']; }
+	get surNameFb() { return this.formPerson.controls['surName']; }
+	get dniFb() { return this.formPerson.controls['dni']; }
+	get genderFb() { return this.formPerson.controls['gender']; }
+	get birthDateFb() { return this.formPerson.controls['birthDate']; }
 
 	constructor(
-		private personService: PersonService,
-		private modalService: BsModalService
-	) {}
+		private formBuilder: FormBuilder,
+		private personService: PersonService
+	) {
+		this.formPerson = this.formBuilder.group({
+			'firstName': [null, []],
+			'surName': [null, []],
+			'dni': [null, []],
+			'gender': [null, []],
+			'birthDate': [null, []],
+		});
+	}
 
-	clickButton(): void {
-		this.personService.insert().subscribe({
+	public insert(): void {
+		let formData = new FormData();
+
+		formData.append('dto.person.firstName', this.firstNameFb.value);
+		formData.append('dto.person.surName', this.surNameFb.value);
+		formData.append('dto.person.dni', this.dniFb.value);
+		formData.append('dto.person.gender', this.genderFb.value);
+		formData.append('dto.person.birthDate', this.birthDateFb.value);
+
+		this.personService.insert(formData).subscribe({
 			next: (response: any) => {
-				this.data = response;
+				console.log(response);
 			},
 			error: (error: any) => {
 				console.log(error);
 			}
 		});
-	}
-
-	getOutputSuscription(dataObject: any): void {
-		this.mySuscription = `${dataObject.fullName} ${dataObject.suscriptionType}`;
-	}
-
-	showModal(myModal: TemplateRef<any>): void {
-		this.modalService.show(myModal);
-	}
-
-	closeModal(): void {
-		this.modalService.hide();
 	}
 }
