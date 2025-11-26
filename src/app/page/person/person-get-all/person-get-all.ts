@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { PersonService } from '../../../api/person.service';
 import { CommonModule } from '@angular/common';
+import { DateFormatPipe } from '../../../pipe/date-format-pipe';
 
 @Component({
 	selector: 'app-person-get-all',
 	imports: [
-		CommonModule
+		CommonModule,
+		DateFormatPipe
 	],
 	templateUrl: './person-get-all.html',
 	styleUrl: './person-get-all.css'
