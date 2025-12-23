@@ -15,7 +15,11 @@
 				<tbody>
 					<tr *ngFor="let item of listPerson">
 						<td>{{item.dni}}</td>
-						<td>{{item.firstName}} {{item.surName}}</td>
+						<td>
+							<div>{{item.firstName}} {{item.surName}}</div>
+							<div *ngFor="let value of item.listPhone" style="color: #999999;font-weight: bold;"><small><span style="color: #000000;text-decoration: underline;">{{value.provider}}</span>: {{value.number}}</small></div>
+							<div *ngIf="item.listPhone.length == 0" style="color: red;font-weight: bold;"><small>Sin números registrados.</small></div>
+						</td>
 						<td>{{item.gender ? 'Masculino' : 'Femenino'}}</td>
 						<td>{{item.birthDate | dateFormat}}</td>
 						<td>{{item.createdAt | dateFormat:'fullDate'}}</td>
