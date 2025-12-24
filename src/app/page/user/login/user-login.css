@@ -1,0 +1,99 @@
+.auth-viewport {
+	all: unset; /* Opcional: resetea propiedades heredadas */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #f3f4f6;
+	font-family: sans-serif;
+	padding: 20px;
+	margin-top: -80px !important;
+}
+
+/* Tarjeta principal */
+.auth-card {
+	background-color: #ffffff;
+	width: 100%;
+	max-width: 400px;
+	padding: 2.5rem;
+	border-radius: 1rem;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.auth-card__title {
+	color: #111827;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
+
+.auth-card__subtitle {
+	color: #6b7280;
+	font-size: 0.875rem;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+/* Estilos del Formulario */
+.auth-form__group {
+	margin-bottom: 1.25rem;
+}
+
+.auth-form__label {
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: #374151;
+	margin-bottom: 0.5rem;
+}
+
+.auth-form__input {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid #d1d5db;
+	border-radius: 0.5rem;
+	background-color: #f9fafb;
+	color: #111827;
+	font-size: 1rem;
+	box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+.auth-form__input:focus {
+	outline: 2px solid #2563eb;
+	outline-offset: -2px;
+}
+
+/* Botón de envío */
+.auth-form__submit-btn {
+	width: 100%;
+	background-color: #2563eb;
+	color: white;
+	padding: 0.75rem;
+	border-radius: 0.5rem;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	margin-top: 1rem;
+}
+
+.auth-form__submit-btn:hover {
+	background-color: #1d4ed8;
+}
+
+/* Footer de la tarjeta */
+.auth-card__footer {
+	margin-top: 1.5rem;
+	text-align: center;
+}
+
+.auth-card__link {
+	font-size: 0.875rem;
+	color: #2563eb;
+	text-decoration: none;
+}
+
+.auth-card__link:hover {
+	text-decoration: underline;
+}

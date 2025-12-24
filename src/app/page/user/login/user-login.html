@@ -1,0 +1,28 @@
+<div class="auth-viewport">
+	<section class="auth-card">
+		<header class="auth-card__header">
+			<h2 class="auth-card__title">Bienvenido</h2>
+			<p class="auth-card__subtitle">Ingresa a tu cuenta</p>
+		</header>
+
+		<form [formGroup]="formUser" class="auth-form">
+			<div class="auth-form__group">
+				<label class="auth-form__label">Email</label>
+				<input type="email" formControlName="email" class="auth-form__input" placeholder="correo@ejemplo.com" required>
+			</div>
+
+			<div class="auth-form__group">
+				<label class="auth-form__label">Contraseña</label>
+				<input type="password" formControlName="password" class="auth-form__input" placeholder="••••••••" required>
+			</div>
+
+			<button type="buttom" class="auth-form__submit-btn" (click)="sendFormLogin()">
+				Iniciar Sesión
+			</button>
+		</form>
+
+		<footer class="auth-card__footer">
+			<a href="#" class="auth-card__link">¿Olvidaste tu contraseña?</a>
+		</footer>
+	</section>
+</div>
